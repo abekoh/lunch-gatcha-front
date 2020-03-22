@@ -8,7 +8,10 @@
         <p>OR</p>
       </v-col>
       <v-col cols="12" sm="4">
-        <v-text-field solo label="場所を入力" append-icon="search"/>
+        <v-form @submit="setPlaceByKeyword" @submit.prevent>
+        <v-text-field solo label="場所を入力" append-icon="search" v-model="keyword" @click:append="setPlaceByKeyword"/>
+
+        </v-form>
       </v-col>
     </v-row>
     <v-row align="start" justify="center">
@@ -28,11 +31,23 @@
   export default {
     name: "PlaceSelector",
     props: ["searchLocation"],
+    data() {
+      return {
+        keyword: ""
+      }
+    },
     methods: {
       async setCurrentPlace() {
         const geoPosition = await getCurrentPlace();
         this.$set(this.searchLocation, 'lat', geoPosition.coords.latitude);
         this.$set(this.searchLocation, 'lng', geoPosition.coords.longitude);
+      }
+      ,
+      async setPlaceByKeyword() {
+        const getUrl = encodeURI('/places?keyword=' + this.keyword);
+        const position = await this.$axios.$get(getUrl);
+        this.$set(this.searchLocation, 'lat', position.location.latitude);
+        this.$set(this.searchLocation, 'lng', position.location.longtitude);
       }
     }
   }
@@ -40,7 +55,7 @@
     return new Promise(((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     }))
-  }
+  };
 </script>
 
 <style scoped>

@@ -41,7 +41,10 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -66,5 +69,13 @@ export default {
     // extend(config, ctx) {
     // }
   },
-  env: envSet
+  env: envSet,
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/places': {
+      target: `${envSet.apiBaseUrl}`
+    }
+  }
 }
