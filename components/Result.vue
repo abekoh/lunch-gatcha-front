@@ -2,18 +2,18 @@
   <div>
     <v-row align="start" justify="center" class="mt-500px">
       <v-col cols="12">
-        <p class="display-2 text-center">豚野郎</p>
+        <p class="display-2 text-center">{{ result.name }}</p>
       </v-col>
     </v-row>
     <v-row align="start" justify="center">
       <v-col cols="12" align="center">
-        <v-rating half-increments v-model="rating"/>
+        <v-rating half-increments v-model="result.reviewStars"/>
       </v-col>
     </v-row>
     <v-row align="start" justify="center">
       <v-col cols="12">
         <GmapMap
-          :center="resultLocation"
+          :center="result.location"
           :zoom="16"
           map-type-id="roadmap"
           style="height: 500px"
@@ -34,10 +34,9 @@
 <script>
   export default {
     name: "Result",
-    props: ["resultLocation"],
+    props: ["result"],
     data() {
       return {
-        rating: 2.5
       }
     }
   }

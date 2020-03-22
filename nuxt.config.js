@@ -76,6 +76,7 @@ export default {
   proxy: {
     '/places': {
       target: `${envSet.apiBaseUrl}`
+      // target: 'http://localhost:8080/api/V1'
     }
   }
 }
