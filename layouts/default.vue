@@ -7,9 +7,7 @@
       <v-spacer/>
     </v-app-bar>
     <v-content>
-      <v-container class="fill-height pa-md-400px">
-        <nuxt/>
-      </v-container>
+      <nuxt/>
     </v-content>
     <v-footer
       app
@@ -23,7 +21,7 @@
   export default {
     data() {
       return {
-        title: '昼飯Gatcha'
+        title: '昼飯Gatcha',
       }
     }
   }

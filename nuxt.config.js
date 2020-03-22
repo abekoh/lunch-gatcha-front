@@ -1,4 +1,5 @@
-import colors from 'vuetify/es5/util/colors'
+const environment = process.env.NODE_ENV || 'development';
+const envSet = require(`./env.${environment}.js`)
 
 export default {
   mode: 'universal',
@@ -28,7 +29,9 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: [
+    '~/plugins/vue2-google-maps.js'
+  ],
   /*
   ** Nuxt.js dev-modules
   */
@@ -56,10 +59,12 @@ export default {
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
-  }
+    transpile: [/^vue2-google-maps($|\/)/]
+    // /*
+    // ** You can extend webpack config here
+    // */
+    // extend(config, ctx) {
+    // }
+  },
+  env: envSet
 }
