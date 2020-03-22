@@ -1,49 +1,28 @@
 <template>
   <v-container class="pa-md-400px">
+    <PlaceSelector :search-location="searchLocation"/>
     <v-row align="start" justify="center">
-      <v-col cols="12" sm="4">
-        <v-btn block color="primary" @click="setCurrentPlace">現在地を取得</v-btn>
-      </v-col>
-      <v-col cols="12" sm="1" align="center">
-        <p>OR</p>
-      </v-col>
-      <v-col cols="12" sm="4">
-        <v-text-field solo label="場所を入力" append-icon="search"/>
-      </v-col>
+      <v-btn x-large color="primary">ガチャを引く</v-btn>
     </v-row>
-    <v-row align="start" justify="center">
-      <v-col cols="12">
-        <GmapMap
-          :center="location"
-          :zoom="16"
-          map-type-id="roadmap"
-          style="height: 500px"
-        />
-      </v-col>
-    </v-row>
+    <div style="height: 80px;"/>
+    <Result :result-location="resultLocation"/>
   </v-container>
 </template>
 
 <script>
+  import PlaceSelector from "../components/PlaceSelector";
+  import Result from "../components/Result";
+
   export default {
     components: {
+      PlaceSelector,
+      Result
     },
     data() {
       return {
-        location: {lat: 35.68123620000001, lng: 139.7671248} // 初期値は東京駅
-      }
-    },
-    methods: {
-      async setCurrentPlace() {
-        const geoPosition = await getCurrentPlace();
-        this.$set(this.location, 'lat', geoPosition.coords.latitude);
-        this.$set(this.location, 'lng', geoPosition.coords.longitude);
+        searchLocation: {lat: 35.68123620000001, lng: 139.7671248}, // 初期値は東京駅
+        resultLocation: {lat: 35.68123620000001, lng: 139.7671248}
       }
     }
-  }
-  const getCurrentPlace = (options) => {
-    return new Promise(((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject, options);
-    }))
   }
 </script>
