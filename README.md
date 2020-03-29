@@ -1,5 +1,7 @@
 # lunch-gatcha-front
 
+![Build and Deploy to GCE](https://github.com/abekoh/lunch-gatcha-front/workflows/Build%20and%20Deploy%20to%20GCE/badge.svg)
+
 > lunch gatcha
 
 ## Build Setup
