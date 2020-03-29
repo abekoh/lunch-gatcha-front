@@ -15,3 +15,5 @@ handlers:
 env_variables:
   HOST: '0.0.0.0'
   GOOGLE_API_API_KEY: {{ google.api.api-key }}
+  BASIC_USERNAME: {{ BASIC_USERNAME }}
+  BASIC_PASSWORD: {{ BASIC_PASSWORD }}
