@@ -71,7 +71,7 @@ export default {
   },
   env: envSet,
   axios: {
-    proxy: false,
+    proxy: !!process.browser,
     baseURL: `${envSet.apiBaseUrl}`
   },
   proxy: {
