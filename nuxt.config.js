@@ -43,7 +43,8 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    'nuxt-basic-auth-module'
   ],
   /*
   ** vuetify module configuration
@@ -78,5 +79,10 @@ export default {
     '/places': {
       target: `${envSet.apiBaseUrl}`
     }
+  },
+  basic: {
+    enabled: envSet.basicEnabled,
+    name: `${envSet.basicUser}`,
+    pass: `${envSet.basicPass}`
   }
 }
