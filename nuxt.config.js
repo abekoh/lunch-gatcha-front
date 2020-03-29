@@ -1,5 +1,5 @@
 const environment = process.env.NODE_ENV || 'development';
-const envSet = require(`./env.${environment}.js`)
+const envSet = require(`./env.${environment}.js`);
 
 export default {
   mode: 'universal',
@@ -76,7 +76,6 @@ export default {
   proxy: {
     '/places': {
       target: `${envSet.apiBaseUrl}`
-      // target: 'http://localhost:8080/api/V1'
     }
   }
 }
