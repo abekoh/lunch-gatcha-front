@@ -1,7 +1,7 @@
-name: Build and Deploy
+name: Build and Deploy to GCE
 on: [push]
 jobs:
-  test:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
