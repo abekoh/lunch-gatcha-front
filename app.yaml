@@ -14,3 +14,4 @@ handlers:
     secure: always
 env_variables:
   HOST: '0.0.0.0'
+  GOOGLE_API_API_KEY: {{ google.api.api-key }}

@@ -8,10 +8,12 @@
     "dev": "nuxt",
     "dev:local": "cross-env NODE_ENV=\"local\" nuxt",
     "build": "nuxt build",
+    "build:prod": "cross-env NODE_ENV=\"production\" nuxt build",
     "start": "nuxt start",
+    "start:prod": "cross-env NOD_ENV=\"production\" nuxt start",
     "generate": "nuxt generate",
     "test": "jest",
-    "deploy": "gcloud app deploy"
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",

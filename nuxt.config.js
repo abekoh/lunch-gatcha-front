@@ -71,7 +71,8 @@ export default {
   },
   env: envSet,
   axios: {
-    proxy: true
+    proxy: false,
+    baseURL: `${envSet.apiBaseUrl}`
   },
   proxy: {
     '/places': {
