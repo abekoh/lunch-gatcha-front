@@ -1,0 +1,31 @@
+name: Build and Deploy
+on: [pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_email: deploy-lanch-gatcha@abekoh-sand.iam.gserviceaccount.com
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: abekoh-sand
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: yarn install
+      - name: Build
+        run: yarn build:prod
+      - name: Test
+        run: yarn test
+      - name: Deploy
+        run: yarn deploy
+        env:
+          GOOGLE_API_API_KEY: ${{ secrets.GOOGLE_API_API_KEY }}
