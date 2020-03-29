@@ -12,7 +12,7 @@
     "start": "nuxt start",
     "start:prod": "cross-env NOD_ENV=\"production\" nuxt start",
     "generate": "nuxt generate",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
