@@ -1,14 +1,14 @@
 <template>
-  <v-container class="pa-md-400px">
+  <v-container class="pa-md-400px" id="container">
     <Loading :enabled="loading"/>
     <PlaceSelector :search-location="searchLocation"/>
-    <v-row align="start" justify="center">
-      <v-col cols="6" sm="12" align="center">
-        <v-btn x-large color="primary" @click="turnGatcha">ガチャを引く</v-btn>
+    <v-row align="start" justify="center" class="text-center">
+      <v-col cols="12" sm="4">
+        <v-btn x-large block color="primary" @click="turnGatcha">ガチャを引く</v-btn>
       </v-col>
     </v-row>
     <div style="height: 80px;"/>
-    <Result v-if="result.enabled" :result="result"/>
+    <Result v-if="result.enabled" :result="result" @re-turn-gatcha="turnGatcha" @go-top="goTop"/>
   </v-container>
 </template>
 
@@ -59,11 +59,16 @@
         this.$set(this.result, 'placeId', result.place.placeId);
         this.$set(this.result, 'name', result.place.name);
         this.$set(this.result, 'reviewStars', result.place.reviewStars);
+        this.$set(this.result, 'url', result.place.url);
         this.$set(this.result, 'enabled', true);
+        console.log(this.result);
         // 結果表示後、スクロール
         this.$nextTick(() => {
           this.$vuetify.goTo('#result');
         });
+      },
+      goTop() {
+        this.$vuetify.goTo('#container');
       }
     }
   }

@@ -14,7 +14,7 @@
     </v-row>
     <v-row align="start" justify="center">
       <v-col cols="12">
-        <GoogleMap :location="searchLocation"/>
+        <GoogleMap :center-location="searchLocation"/>
       </v-col>
     </v-row>
   </div>
