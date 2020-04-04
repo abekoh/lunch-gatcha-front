@@ -2,10 +2,12 @@
   <v-container class="pa-md-400px">
     <PlaceSelector :search-location="searchLocation"/>
     <v-row align="start" justify="center">
-      <v-btn x-large color="primary" @click="turnGatcha">ガチャを引く</v-btn>
+      <v-col cols="4" sm="12">
+        <v-btn x-large color="primary" @click="turnGatcha">ガチャを引く</v-btn>
+      </v-col>
     </v-row>
     <div style="height: 80px;"/>
-    <Result :result="result"/>
+        <Result :result="result"/>
   </v-container>
 </template>
 
@@ -22,6 +24,7 @@
       return {
         searchLocation: {lat: 35.68123620000001, lng: 139.7671248}, // 初期値は東京駅
         result: {
+          enabled: false,
           placeId: "",
           location: {lat: 35.68123620000001, lng: 139.7671248},
           name: "",
@@ -45,6 +48,7 @@
         this.$set(this.result, 'placeId', result.place.placeId);
         this.$set(this.result, 'name', result.place.name);
         this.$set(this.result, 'reviewStars', result.place.reviewStars);
+        this.$set(this.result, 'enabled', true);
       }
     }
   }
