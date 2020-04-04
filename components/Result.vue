@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="result">
     <v-row align="start" justify="center" class="mt-500px">
       <v-col cols="12">
         <p class="display-2 text-center">{{ result.name }}</p>
@@ -12,19 +12,14 @@
     </v-row>
     <v-row align="start" justify="center">
       <v-col cols="12">
-        <GmapMap
-          :center="result.location"
-          :zoom="16"
-          map-type-id="roadmap"
-          style="height: 500px"
-        />
+        <GoogleMap :location="result.location"/>
       </v-col>
     </v-row>
     <v-row align="start" justify="center">
-      <v-col cols="4">
+      <v-col cols="6">
         <v-btn x-large color="primary">Google Mapで開く</v-btn>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="6">
         <v-btn x-large color="primary">もう一度引く</v-btn>
       </v-col>
     </v-row>
@@ -32,8 +27,13 @@
 </template>
 
 <script>
+  import GoogleMap from "./GoogleMap";
+
   export default {
     name: "Result",
+    components: {
+      GoogleMap
+    },
     props: ["result"],
     data() {
       return {
