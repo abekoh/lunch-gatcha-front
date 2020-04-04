@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-app-bar
+      absolute
       app
     >
       <v-toolbar-title v-text="title"/>
@@ -10,6 +11,7 @@
       <nuxt/>
     </v-content>
     <v-footer
+      absolute
       app
     >
       <span>&copy; {{ new Date().getFullYear() }} abekoh</span>
@@ -21,7 +23,7 @@
   export default {
     data() {
       return {
-        title: '昼飯Gatcha',
+        title: '昼飯ガチャ',
       }
     }
   }
