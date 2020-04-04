@@ -18,9 +18,9 @@
         switch (this.$vuetify.breakpoint.name) {
           case 'xs':
           case 'sm':
-            return 'height: 400px';
+            return 'height: 460px';
           default:
-            return 'height: 500px';
+            return 'height: 650px';
         }
       }
     }
