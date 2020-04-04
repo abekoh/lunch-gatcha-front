@@ -82,7 +82,7 @@ export default {
   },
   basic: {
     enabled: envSet.basicEnabled,
-    name: `${envSet.basicUser}`,
-    pass: `${envSet.basicPass}`
+    name: process.env.BASIC_USERNAME,
+    pass: process.env.BASIC_PASSWORD
   }
 }
