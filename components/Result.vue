@@ -7,12 +7,12 @@
     </v-row>
     <v-row align="start" justify="center">
       <v-col cols="12" align="center" class="pa-0">
-        <v-rating half-increments v-model="result.reviewStars"/>
+        <v-rating half-increments readonly v-model="result.reviewStars"/>
       </v-col>
     </v-row>
     <v-row align="start" justify="center">
       <v-col cols="12">
-        <GoogleMap :location="result.location"/>
+        <GoogleMap :center-location="result.location"/>
       </v-col>
     </v-row>
     <v-row align="start" justify="center" class="text-center">
